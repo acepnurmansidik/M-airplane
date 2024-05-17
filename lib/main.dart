@@ -1,3 +1,7 @@
+import 'package:airplane/page/bonus_page.dart';
+import 'package:airplane/page/get_started_page.dart';
+import 'package:airplane/page/signup_page.dart';
+import 'package:airplane/page/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        "/": (context) => SplashPage(),
+        "/get-started": (context) => GetStartedPage(),
+        "/sign-up": (context) => SignUpPage(),
+        "/bonus": (context) => BonusPage(),
+      },
+    );
   }
 }
