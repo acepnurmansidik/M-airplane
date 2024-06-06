@@ -1,4 +1,5 @@
 import 'package:airplane/theme.dart';
+import 'package:airplane/widgets/custom_buttom.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -146,23 +147,12 @@ class _SignUpPageState extends State<SignUpPage> {
     }
 
     Widget submitButton() {
-      return Container(
-        width: double.infinity,
-        height: 55,
-        child: TextButton(
+      return CustomButtom(
+          title: 'Get Started',
+          font_size: 18,
           onPressed: () {
             Navigator.pushNamed(context, '/bonus');
-          },
-          child: Text(
-            'Get Started',
-            style: whiteTextStyle.copyWith(fontSize: 18, fontWeight: medium),
-          ),
-          style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(defaultRadius))),
-        ),
-      );
+          });
     }
 
     return Container(
