@@ -1,3 +1,4 @@
+import 'package:airplane/page/home_page.dart';
 import 'package:airplane/theme.dart';
 import 'package:airplane/widgets/custom_buttom_navigation_item.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +9,15 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildContent() {
+      return HomePage();
+    }
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Stack(
         children: [
-          Text('MAIN PAGE'),
+          buildContent(),
           customButtonNavigation(),
         ],
       ),
