@@ -1,4 +1,6 @@
 import 'package:airplane/page/home_page.dart';
+import 'package:airplane/page/transaction_page.dart';
+import 'package:airplane/page/wallet_page.dart';
 import 'package:airplane/theme.dart';
 import 'package:airplane/widgets/custom_buttom_navigation_item.dart';
 import 'package:flutter/material.dart';
