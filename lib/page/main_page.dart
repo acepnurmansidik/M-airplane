@@ -13,6 +13,31 @@ class MainPage extends StatelessWidget {
       return HomePage();
     }
 
+    Widget customButtonNavigation() {
+      return Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          margin: EdgeInsets.only(bottom: 30, left: 24, right: 24),
+          width: double.infinity,
+          height: 60,
+          decoration: BoxDecoration(
+              color: kWhiteColor, borderRadius: BorderRadius.circular(18)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomButtomNavigationItem(
+                imageUrl: 'assets/icon_globe.png',
+                isSelected: true,
+              ),
+              CustomButtomNavigationItem(imageUrl: 'assets/icon_booking.png'),
+              CustomButtomNavigationItem(imageUrl: 'assets/icon_card.png'),
+              CustomButtomNavigationItem(imageUrl: 'assets/icon_setting.png'),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Stack(
@@ -20,31 +45,6 @@ class MainPage extends StatelessWidget {
           buildContent(),
           customButtonNavigation(),
         ],
-      ),
-    );
-  }
-
-  Widget customButtonNavigation() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        margin: EdgeInsets.only(bottom: 30, left: 24, right: 24),
-        width: double.infinity,
-        height: 60,
-        decoration: BoxDecoration(
-            color: kWhiteColor, borderRadius: BorderRadius.circular(18)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CustomButtomNavigationItem(
-              imageUrl: 'assets/icon_globe.png',
-              isSelected: true,
-            ),
-            CustomButtomNavigationItem(imageUrl: 'assets/icon_booking.png'),
-            CustomButtomNavigationItem(imageUrl: 'assets/icon_card.png'),
-            CustomButtomNavigationItem(imageUrl: 'assets/icon_setting.png'),
-          ],
-        ),
       ),
     );
   }
