@@ -1,30 +1,41 @@
+import 'package:airplane/cubit/page_cubit.dart';
 import 'package:airplane/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomButtomNavigationItem extends StatelessWidget {
+  final int index;
   final String imageUrl;
-  final bool isSelected;
   const CustomButtomNavigationItem(
-      {super.key, required this.imageUrl, this.isSelected = false});
+      {super.key, required this.index, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(),
-        Container(
-          height: 24,
-          width: 24,
-          decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage(imageUrl))),
-        ),
-        Container(
-          height: 2,
-          width: 30,
-          color: isSelected ? kPrimaryColor : kTransparantColor,
-        )
-      ],
+    return GestureDetector(
+      onTap: () {
+        context.read<PageCubit>().setPage(index);
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(),
+          Image.asset(
+            imageUrl,
+            height: 24,
+            width: 24,
+            color: context.read<PageCubit>().state == index
+                ? kPrimaryColor
+                : kGreyColor,
+          ),
+          Container(
+            height: 2,
+            width: 30,
+            color: context.read<PageCubit>().state == index
+                ? kPrimaryColor
+                : kTransparantColor,
+          )
+        ],
+      ),
     );
   }
 }
