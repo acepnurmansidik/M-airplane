@@ -3,6 +3,7 @@ import 'package:airplane/cubit/page_cubit.dart';
 import 'package:airplane/page/bonus_page.dart';
 import 'package:airplane/page/get_started_page.dart';
 import 'package:airplane/page/main_page.dart';
+import 'package:airplane/page/signin_page.dart';
 import 'package:airplane/page/signup_page.dart';
 import 'package:airplane/page/splash_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           "/": (context) => SplashPage(),
           "/get-started": (context) => GetStartedPage(),
           "/sign-up": (context) => SignUpPage(),
+          "/sign-in": (context) => SignInPage(),
           "/bonus": (context) => BonusPage(),
           "/main": (context) => MainPage(),
         },

@@ -1,4 +1,5 @@
 import 'package:airplane/cubit/auth_cubit.dart';
+import 'package:airplane/cubit/page_cubit.dart';
 import 'package:airplane/theme.dart';
 import 'package:airplane/widgets/custom_buttom.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,9 @@ class SettingPage extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 backgroundColor: kRedColor, content: Text(state.error)));
           } else if (state is AuthInitial) {
+            context.read<PageCubit>().setPage(0);
             Navigator.pushNamedAndRemoveUntil(
-                context, '/sign-up', (route) => false);
+                context, '/sign-in', (route) => false);
           }
         },
         builder: (context, state) {
