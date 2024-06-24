@@ -41,46 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAhJNTZAkTwqbPzqiL_HjjtD4rYJ3a-gl0',
-    appId: '1:604560300602:web:8e9d2fe32493528857f303',
-    messagingSenderId: '604560300602',
-    projectId: 'airplane-18148',
-    authDomain: 'airplane-18148.firebaseapp.com',
-    storageBucket: 'airplane-18148.appspot.com',
+    apiKey: 'AIzaSyAtpRI0YY2pBwVVqG6G6RNry4hpZWZ7zCo',
+    appId: '1:1068687391641:web:5036856c42b22cac863108',
+    messagingSenderId: '1068687391641',
+    projectId: 'airplane-aa34c',
+    authDomain: 'airplane-aa34c.firebaseapp.com',
+    storageBucket: 'airplane-aa34c.appspot.com',
+    measurementId: 'G-LJBJVRSN1T',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAg-smada7eDqcTjX60Oi-xYXAc8uooMhs',
-    appId: '1:604560300602:android:32596ffa5b7484db57f303',
-    messagingSenderId: '604560300602',
-    projectId: 'airplane-18148',
-    storageBucket: 'airplane-18148.appspot.com',
+    apiKey: 'AIzaSyDeGT_LOSLwyE2pveFgBm-LUpb-OCMiKeI',
+    appId: '1:1068687391641:android:c5fe2cf759d5a74d863108',
+    messagingSenderId: '1068687391641',
+    projectId: 'airplane-aa34c',
+    storageBucket: 'airplane-aa34c.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBCu1YVelLcOFgX3SMniorSL-Z-EmpmZ1c',
-    appId: '1:604560300602:ios:80058eb4e094420957f303',
-    messagingSenderId: '604560300602',
-    projectId: 'airplane-18148',
-    storageBucket: 'airplane-18148.appspot.com',
+    apiKey: 'AIzaSyDOaAemNmOhBwMfLt_1GYuhZDOOkiD1w7E',
+    appId: '1:1068687391641:ios:51c999a1dd3a6317863108',
+    messagingSenderId: '1068687391641',
+    projectId: 'airplane-aa34c',
+    storageBucket: 'airplane-aa34c.appspot.com',
     iosBundleId: 'com.example.airplane',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBCu1YVelLcOFgX3SMniorSL-Z-EmpmZ1c',
-    appId: '1:604560300602:ios:80058eb4e094420957f303',
-    messagingSenderId: '604560300602',
-    projectId: 'airplane-18148',
-    storageBucket: 'airplane-18148.appspot.com',
+    apiKey: 'AIzaSyDOaAemNmOhBwMfLt_1GYuhZDOOkiD1w7E',
+    appId: '1:1068687391641:ios:51c999a1dd3a6317863108',
+    messagingSenderId: '1068687391641',
+    projectId: 'airplane-aa34c',
+    storageBucket: 'airplane-aa34c.appspot.com',
     iosBundleId: 'com.example.airplane',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAhJNTZAkTwqbPzqiL_HjjtD4rYJ3a-gl0',
-    appId: '1:604560300602:web:c4d9c7b5f1dd639557f303',
-    messagingSenderId: '604560300602',
-    projectId: 'airplane-18148',
-    authDomain: 'airplane-18148.firebaseapp.com',
-    storageBucket: 'airplane-18148.appspot.com',
+    apiKey: 'AIzaSyAtpRI0YY2pBwVVqG6G6RNry4hpZWZ7zCo',
+    appId: '1:1068687391641:web:26befa1fff754fc6863108',
+    messagingSenderId: '1068687391641',
+    projectId: 'airplane-aa34c',
+    authDomain: 'airplane-aa34c.firebaseapp.com',
+    storageBucket: 'airplane-aa34c.appspot.com',
+    measurementId: 'G-8YHEDNSTSZ',
   );
+
 }

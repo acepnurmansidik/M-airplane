@@ -1,4 +1,6 @@
 import 'package:airplane/cubit/auth_cubit.dart';
+import 'package:airplane/cubit/destination_cubit.dart';
+import 'package:airplane/models/destination_model.dart';
 import 'package:airplane/theme.dart';
 import 'package:airplane/widgets/destination_card.dart';
 import 'package:airplane/widgets/destination_tile.dart';
@@ -6,8 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: Digunakan ketika pertama kali dibuka
+    context.read<DestinationCubit>().fetchDestination();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,45 +74,21 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget popularDestination() {
+    Widget popularDestination(List<DestinationModel> destinations) {
       return Container(
         margin: EdgeInsets.only(top: 30),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              DestinationCard(
-                  name: 'Kali Ciliwung',
-                  city: 'Tangerang',
-                  rating: 4.8,
-                  imageUrl: 'assets/img_dest3.png'),
-              DestinationCard(
-                  name: 'White Houses',
-                  city: 'Spain',
-                  rating: 4.7,
-                  imageUrl: 'assets/img_dest2.png'),
-              DestinationCard(
-                  name: 'Hill Heyo',
-                  city: 'Monaco',
-                  rating: 4.8,
-                  imageUrl: 'assets/img_dest1.png'),
-              DestinationCard(
-                  name: 'Menarra',
-                  city: 'Japan',
-                  rating: 5.0,
-                  imageUrl: 'assets/img_dest4.png'),
-              DestinationCard(
-                  name: 'Payung Teduh',
-                  city: 'Singapore',
-                  rating: 4.8,
-                  imageUrl: 'assets/img_dest5.png'),
-            ],
+            children: destinations
+                .map((destination) => DestinationCard(destination: destination))
+                .toList(),
           ),
         ),
       );
     }
 
-    Widget newDestinaation() {
+    Widget newDestinaation(List<DestinationModel> destinations) {
       return Container(
         margin: EdgeInsets.only(
             top: 30, left: defaultMargin, right: defaultMargin, bottom: 100),
@@ -110,38 +100,37 @@ class HomePage extends StatelessWidget {
               style:
                   blackTextStyle.copyWith(fontSize: 18, fontWeight: semibold),
             ),
-            DestinationTile(
-                name: 'Danau Beratan',
-                city: 'Singapore',
-                rating: 4.6,
-                imageUrl: 'assets/img_dest6.png'),
-            DestinationTile(
-                name: 'Sydney Opera',
-                city: 'Australia',
-                rating: 4.7,
-                imageUrl: 'assets/img_dest7.png'),
-            DestinationTile(
-                name: 'Roma',
-                city: 'Italy',
-                rating: 4.5,
-                imageUrl: 'assets/img_dest8.png'),
-            DestinationTile(
-                name: 'Payung Teduh',
-                city: 'Singapore',
-                rating: 4.9,
-                imageUrl: 'assets/img_dest9.png'),
-            DestinationTile(
-                name: 'Hill Hey',
-                city: 'Monaco',
-                rating: 4.3,
-                imageUrl: 'assets/img_dest10.png'),
+            Column(
+              children: destinations
+                  .map((destination) =>
+                      DestinationTile(destination: destination))
+                  .toList(),
+            )
           ],
         ),
       );
     }
 
-    return ListView(
-      children: [header(), popularDestination(), newDestinaation()],
+    return BlocConsumer<DestinationCubit, DestinationState>(
+      listener: (context, state) {
+        if (state is DestinationFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(backgroundColor: kRedColor, content: Text(state.error)));
+        }
+      },
+      builder: (context, state) {
+        if (state is DestinationSuccess) {
+          return ListView(
+            children: [
+              header(),
+              popularDestination(state.destinations),
+              newDestinaation(state.destinations)
+            ],
+          );
+        }
+
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
