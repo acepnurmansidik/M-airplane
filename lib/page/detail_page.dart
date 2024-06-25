@@ -1,14 +1,15 @@
+import 'package:airplane/models/destination_model.dart';
 import 'package:airplane/page/choose_seat_page.dart';
 import 'package:airplane/theme.dart';
 import 'package:airplane/widgets/custom_buttom.dart';
 import 'package:airplane/widgets/interest_item.dart';
 import 'package:airplane/widgets/photo_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+  final DestinationModel destination;
+  const DetailPage(this.destination, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class DetailPage extends StatelessWidget {
         height: 450,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/img_dest3.png'), fit: BoxFit.cover)),
+                image: NetworkImage(destination.imageUrl), fit: BoxFit.cover)),
       );
     }
 
@@ -64,12 +65,12 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Lake Ciliwung',
+                          '${destination.name}',
                           style: whiteTextStyle.copyWith(
                               fontSize: 24, fontWeight: semibold),
                         ),
                         Text(
-                          'Tangerang',
+                          '${destination.city}',
                           style: whiteTextStyle.copyWith(
                               fontSize: 16, fontWeight: light),
                         )
@@ -89,7 +90,7 @@ class DetailPage extends StatelessWidget {
                                 image: AssetImage('assets/icon_star.png'))),
                       ),
                       Text(
-                        '4.1',
+                        '${destination.rating}',
                         style: whiteTextStyle.copyWith(fontWeight: medium),
                       )
                     ],
@@ -117,7 +118,7 @@ class DetailPage extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                    '${destination.about}',
                     style: blackTextStyle.copyWith(height: 1.6),
                   ),
 
@@ -136,18 +137,10 @@ class DetailPage extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: [
-                        PhotoItem(
-                          imageUrl: 'assets/img_photo1.png',
-                        ),
-                        PhotoItem(
-                          imageUrl: 'assets/img_photo2.png',
-                        ),
-                        PhotoItem(
-                          imageUrl: 'assets/img_photo3.png',
-                        ),
-                      ],
-                    ),
+                        children: destination.photos
+                                ?.map((photo) => PhotoItem(imageUrl: photo))
+                                .toList() ??
+                            []),
                   ),
 
                   // NOTE: INTEREST
@@ -192,7 +185,11 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'IDR 2.500.000',
+                          NumberFormat.currency(
+                                  locale: 'id',
+                                  symbol: "IDR ",
+                                  decimalDigits: 0)
+                              .format(destination.price),
                           style: blackTextStyle.copyWith(
                               fontSize: 18, fontWeight: medium),
                         ),

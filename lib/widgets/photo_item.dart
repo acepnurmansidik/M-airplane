@@ -12,8 +12,8 @@ class PhotoItem extends StatelessWidget {
       margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          image:
-              DecorationImage(fit: BoxFit.cover, image: AssetImage(imageUrl))),
+          image: DecorationImage(
+              fit: BoxFit.cover, image: NetworkImage(imageUrl))),
     );
   }
 }
