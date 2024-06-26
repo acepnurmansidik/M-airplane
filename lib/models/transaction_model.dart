@@ -22,7 +22,6 @@ class TransactionModel extends Equatable {
       this.grandTotal = 0});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         destination,
         amountOfTraveler,
