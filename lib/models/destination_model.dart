@@ -7,7 +7,7 @@ class DestinationModel extends Equatable {
   final String imageUrl;
   final double rating;
   final int price;
-  final String about;
+  final String? about;
   final List? photos;
 
   const DestinationModel(

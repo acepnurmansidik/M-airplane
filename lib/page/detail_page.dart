@@ -118,7 +118,8 @@ class DetailPage extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    '${destination.about}',
+                    // '${destination.about}',
+                    'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
                     style: blackTextStyle.copyWith(height: 1.6),
                   ),
 
@@ -136,11 +137,12 @@ class DetailPage extends StatelessWidget {
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Row(
-                        children: destination.photos
-                                ?.map((photo) => PhotoItem(imageUrl: photo))
-                                .toList() ??
-                            []),
+                    // child: Row(
+                    //     children: destination.photos
+                    //             ?.map((photo) => PhotoItem(imageUrl: photo))
+                    //             .toList() ??
+                    //         []),
+                    child: Row(children: []),
                   ),
 
                   // NOTE: INTEREST

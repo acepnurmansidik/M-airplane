@@ -12,12 +12,12 @@ final class TransactionInitial extends TransactionState {}
 final class TransactionLoading extends TransactionState {}
 
 final class TransactionSuccess extends TransactionState {
-  // final TransactionModel transaction;
+  final List<TransactionModel> transactions;
 
-  // const TransactionSuccess(this.transaction);
+  const TransactionSuccess(this.transactions);
 
-  // @override
-  // List<Object> get props => [transaction];
+  @override
+  List<Object> get props => [transactions];
 }
 
 final class TransactionFailed extends TransactionState {
